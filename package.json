@@ -1,0 +1,32 @@
+{
+	"name": "shopswift",
+	"version": "1.0.0",
+	"description": "eCommerce application built with MERN stack",
+	"type": "module",
+	"main": "server.js",
+	"scripts": {
+		"start": "node backend/server.js",
+		"server": "nodemon backend/server.js",
+		"client": "npm run dev --prefix frontend",
+		"both": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/4kent4/shopswift-ecomm-mern-stack.git"
+	},
+	"author": "Kent Fortich",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/4kent4/shopswift-ecomm-mern-stack/issues"
+	},
+	"homepage": "https://github.com/4kent4/shopswift-ecomm-mern-stack#readme",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"mongoose": "^7.4.2"
+	},
+	"devDependencies": {
+		"concurrently": "^8.2.0"
+	}
+}
