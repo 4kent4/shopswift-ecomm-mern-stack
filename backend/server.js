@@ -6,6 +6,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cookieParser from "cookie-parser";
 import productRoute from "./routes/productRoute.js";
 import userRoutes from "./routes/userRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
 
 const PORT = process.env.PORT;
 
@@ -23,6 +24,11 @@ app.get("/", (req, res) => {
 
 app.use("/api/products", productRoute);
 app.use("/api/users", userRoutes);
+app.use("/api/orders", orderRoutes);
+
+app.get("/api/config/paypal", (req, res) =>
+	res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
+);
 
 app.use(notFound);
 app.use(errorHandler);
