@@ -79,7 +79,7 @@ const OrderScreen = () => {
 				purchase_units: [
 					{
 						amount: {
-							value: order.tatalPrice,
+							value: order.totalPrice,
 						},
 					},
 				],
