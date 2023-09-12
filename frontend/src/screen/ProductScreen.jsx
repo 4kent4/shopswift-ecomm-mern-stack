@@ -10,6 +10,7 @@ import {
 	Button,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
+import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { useGetProductDetailsQuery } from "../slices/productApiSlice";
 import { useState } from "react";
@@ -27,6 +28,7 @@ const ProductScreen = () => {
 	const {
 		data: product,
 		isLoading,
+		refetch,
 		isError,
 	} = useGetProductDetailsQuery(productId);
 
