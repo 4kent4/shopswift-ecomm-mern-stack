@@ -127,7 +127,7 @@ const ProductEditScreen = () => {
                   onChange={(e) => setBrand(e.target.value)}>
                 </Form.Control>
               </Form.Group>
-
+              {loadingUpload && <Loader/>}
               <Form.Group controlId="countInStock" className="my-2">
                 <Form.Label>Count In Stock</Form.Label>
                 <Form.Control
