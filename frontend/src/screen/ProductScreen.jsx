@@ -12,6 +12,7 @@ import {
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import Meta from "../components/Meta";
 import {toast} from 'react-toastify'
 import { useGetProductDetailsQuery, useCreateReviewMutation } from "../slices/productApiSlice";
 import { useState } from "react";
@@ -74,7 +75,8 @@ const ProductScreen = () => {
 					{isError?.data?.message || isError.error}
 				</Message>
 			) : (
-				<>
+						<>
+							<Meta title={product.name} />
 					<Row>
 						<Col md={5}>
 							<Image src={product.image} alt={product.name} fluid />

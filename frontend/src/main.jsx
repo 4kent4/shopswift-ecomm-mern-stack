@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
+import {HelmetProvider} from "react-helmet-async"
 import store from "./store.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App.jsx";
@@ -34,7 +35,9 @@ const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<App />}>
 			<Route index={true} path="/" element={<HomeScreen />} />
+			<Route path="/search/:keyword" element={<HomeScreen />} />
 			<Route path="/page/:pageNumber" element={<HomeScreen />} />
+			<Route path="/search/:keyword/page/:pageNumber" element={<HomeScreen />} />
 			<Route path="/product/:id" element={<ProductScreen />} />
 			<Route path="/cart" element={<CartScreen />} />
 			<Route path="/login" element={<LoginScreen />} />
@@ -62,10 +65,12 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
+		<HelmetProvider>
 		<Provider store={store}>
 			<PayPalScriptProvider options={{ clientId: "test" }} deferLoading={false}>
 				<RouterProvider router={router} />
 			</PayPalScriptProvider>
 		</Provider>
+		</HelmetProvider>
 	</React.StrictMode>
 );
