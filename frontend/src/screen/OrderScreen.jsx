@@ -68,11 +68,11 @@ const OrderScreen = () => {
 			}
 		});
 	}
-	async function onApproveTest() {
-		await payOrder({ orderId, details: { payer: {} } });
-		refetch();
-		toast.success("Payment successful");
-	}
+	// async function onApproveTest() {
+	// 	await payOrder({ orderId, details: { payer: {} } });
+	// 	refetch();
+	// 	toast.success("Payment successful");
+	// }
 	function onError(error) {
 		toast.error(error.message);
 	}
@@ -103,11 +103,11 @@ const OrderScreen = () => {
 	}
 
 	return isLoading ? (
-		<Loader />
-	) : error ? (
-		<Message variant="danger" />
-	) : (
-		<>
+    <Loader />
+  ) : error ? (
+    <Message variant='danger'>{error?.data?.message || error.error}</Message>
+  ) : (
+    <>
 			<h1>Order {order._id}</h1>
 			<Row>
 				<Col md={8}>
@@ -155,7 +155,7 @@ const OrderScreen = () => {
 											<Image src={item.image} alt={item.name} fluid rounded />
 										</Col>
 										<Col>
-											<Link to={`/products/${item.product}`}>{item.name}</Link>
+											<Link to={`/product/${item.product}`}>{item.name}</Link>
 										</Col>
 										<Col md={4}>
 											{item.qty} x ${item.price} = ${item.qty * item.price}
@@ -202,12 +202,12 @@ const OrderScreen = () => {
 										<Loader />
 									) : (
 										<div>
-											<Button
+											{/* <Button
 												onClick={onApproveTest}
 												style={{ marginBottom: "10px" }}
 											>
 												Test Pay Order
-											</Button>
+											</Button> */}
 											<div>
 												<PayPalButtons
 													createOrder={createOrder}
